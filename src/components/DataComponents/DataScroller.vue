@@ -5,6 +5,7 @@
       class="recycle-scroller"
       :items="data"
       :item-size="64"
+      :page-mode="true"
       key-field="id"
     >
       <template v-slot="props">{{props.index}} {{props.item.properties.callsign}}</template>

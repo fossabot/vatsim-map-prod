@@ -1,11 +1,13 @@
 <template>
-  <MglLayer v-if="geojson.type" :source="geojson" :layer="geojsonLayer" />
+  <div v-if="geojson.type">
+    <MglLayer :source="geojson" :layer="geojsonTextLayer" />
+    <MglLayer :source="geojson" :layer="geojsonLayer" />
+  </div>
 </template>
 
 <script>
 import MglLayer from '@/components/MapComponents/MglLayer';
 import PredictiveRender from '@/mixins/PredictiveRender';
-
 
 export default {
   components: {
@@ -24,8 +26,23 @@ export default {
         layout: {
           'icon-allow-overlap': true,
           'icon-image': 'airplaneIcon',
-          'icon-size': 0.5,
+          'icon-size': 0.35,
           'icon-rotate': ['get', 'heading'],
+        },
+      },
+      geojsonTextLayer: {
+        id: 'pilotsTextLayer',
+        type: 'symbol',
+        source: 'pilots',
+        minzoom: 7,
+        layout: {
+          'text-field': ['get', 'callsign'],
+          'text-font': ['Open Sans Bold', 'Arial Unicode MS Regular'],
+          'text-offset': [0, -1.5],
+          'text-size': 11,
+        },
+        paint: {
+          'text-color': '#fff',
         },
       },
     };
@@ -73,7 +90,7 @@ export default {
         const { heading, speed } = pilot.properties;
         const distance = (speed / 3600) * 1852 * 0.5;
 
-        // eslint-disable-next-line no-unused-vars
+        // predictiverender mixin
         const newCoords = this.destinationFix(latitude, longitude, distance, heading);
         const newPilot = {
           ...pilot,

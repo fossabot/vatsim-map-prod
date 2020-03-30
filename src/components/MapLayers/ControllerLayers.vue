@@ -1,16 +1,9 @@
-<template>
-  <div>
-    <MglLayer v-if="initialFetch.DEL" :source="initialFetch.DEL" :layer="delLayer" />
-    <MglLayer v-if="initialFetch.GND" :source="initialFetch.GND" :layer="gndLayer" />
-    <MglLayer v-if="initialFetch.TWR" :source="initialFetch.TWR" :layer="twrLayer" />
-    <MglLayer v-if="initialFetch.APP" :source="initialFetch.APP" :layer="appLayer" />
-  </div>
-</template>
-
 <script>
+import mapboxgl from 'mapbox-gl';
 import MglLayer from '@/components/MapComponents/MglLayer';
 
 export default {
+  render: () => null,
   components: {
     MglLayer,
   },
@@ -22,6 +15,16 @@ export default {
       const response = await fetch('https://map-dev.vatsim.net/api/v1/network/online/controllers?groupBy=type&strict=false');
       const data = await response.json();
       this.initialFetch = data;
+      // this.initGroundControllers();
+    },
+    initGroundControllers() {
+      console.log(this.initialFetch.GND);
+      for (const feature of this.initialFetch.GND.data.features) {
+        const el = document.createElement('div');
+        el.innerHTML = feature.properties.callsign;
+
+        new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(this.$store.state.map);
+      }
     },
   },
   data() {

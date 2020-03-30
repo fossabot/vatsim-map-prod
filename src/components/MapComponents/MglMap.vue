@@ -1,7 +1,7 @@
 <template>
   <div class="mglmap">
     <slot></slot>
-    <div class="map-container" :id="container"></div>
+    <div class="map-container" :id="container"><MapSettings /></div>
   </div>
 </template>
 
@@ -10,9 +10,11 @@ import mapboxgl from 'mapbox-gl';
 import MapEvents from '@/mixins/MapEvents';
 import MapImages from '@/mixins/MapImages';
 import SaveSession from '@/mixins/SaveSession';
+import MapSettings from '@/components/MapComponents/MapSettings.vue';
 
 export default {
   mixins: [MapEvents, MapImages, SaveSession],
+  components: { MapSettings },
   data() {
     return {
       mapCenter: [0, 52],
@@ -98,6 +100,10 @@ export default {
 </script>
 
 <style lang="scss">
+.map-container {
+  position: relative;
+}
+
 .mapboxgl-map {
   position: absolute;
   top: 0;

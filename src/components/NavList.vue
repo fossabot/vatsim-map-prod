@@ -28,16 +28,16 @@
           <inline-svg class="route-icon icon" :src="require('../assets/img/svg/Map.svg')"></inline-svg>Map
         </div>
       </router-link>
-      <router-link to="/data">
-        <div @click="toggleNav()" class="route">
+      <!-- <router-link to="/data"> -->
+        <div @click="toggleNav()" class="route disabled">
           <inline-svg class="route-icon icon" :src="require('../assets/img/svg/Data.svg')"></inline-svg>Data
         </div>
-      </router-link>
-      <router-link to="/weather">
-        <div @click="toggleNav()" class="route">
+      <!-- </router-link> -->
+      <!-- <router-link to="/weather"> -->
+        <div @click="toggleNav()" class="route disabled">
           <inline-svg class="route-icon icon" :src="require('../assets/img/svg/Weather.svg')"></inline-svg>Weather/ATIS
         </div>
-      </router-link>
+      <!-- </router-link> -->
     </div>
   </div>
 </template>
@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 .NavList {
   width: 20%;
-  min-width: 130px;
+  min-width: 200px;
   position: relative;
 }
 
@@ -118,7 +118,7 @@ export default {
 }
 
 .routes {
-  z-index: 5;
+  z-index: 7;
   background-color: $secondary;
   position: absolute;
   box-sizing: border-box;
@@ -137,6 +137,10 @@ export default {
   &:hover {
     background-color: #272729;
   }
+}
+
+.disabled {
+  cursor: not-allowed;
 }
 
 .route-icon {
