@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    options: {},
     map: {},
     pilotsData: {},
     sidebarContent: null,
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     setPilotsData(state, data) {
       state.pilotsData = data;
+    },
+    updateOptions(state, data) {
+      state.options = data;
     },
   },
   actions: {

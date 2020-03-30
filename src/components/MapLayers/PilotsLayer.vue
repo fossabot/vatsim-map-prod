@@ -1,6 +1,8 @@
 <template>
   <div v-if="geojson.type">
-    <MglLayer :source="geojson" :layer="geojsonTextLayer" />
+    <div v-if="showLabels">
+      <MglLayer :source="geojson" :layer="geojsonTextLayer" />
+    </div>
     <MglLayer :source="geojson" :layer="geojsonLayer" />
   </div>
 </template>
@@ -14,6 +16,12 @@ export default {
     MglLayer,
   },
   mixins: [PredictiveRender],
+  computed: {
+    showLabels() {
+      const options = JSON.parse(this.$store.state.options);
+      return options.aircraftLabels;
+    },
+  },
   data() {
     return {
       lastFetch: {},
@@ -36,6 +44,7 @@ export default {
         source: 'pilots',
         minzoom: 7,
         layout: {
+          'text-allow-overlap': true,
           'text-field': ['get', 'callsign'],
           'text-font': ['Open Sans Bold', 'Arial Unicode MS Regular'],
           'text-offset': [0, -1.5],
@@ -50,15 +59,14 @@ export default {
   mounted() {
     this.initPilots();
     this.addClickListeners();
-
     setInterval(async () => {
       await this.updatePilots();
     }, 15000);
 
-    setInterval(() => {
-      const mapZoom = this.$store.state.map.getZoom();
-      if (this.predictiveSource.data && mapZoom > 6.5) this.predictiveRender();
-    }, 500);
+    // setInterval(() => {
+    //   const mapZoom = this.$store.state.map.getZoom();
+    //   if (this.predictiveSource.data && mapZoom > 6.5) this.predictiveRender();
+    // }, 500);
   },
   methods: {
     async fetchPilots() {

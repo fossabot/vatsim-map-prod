@@ -1,9 +1,7 @@
 <template>
   <div class="MapSettings">
-    <div class="header" @click="isDropped = !isDropped" :class="{ 'active-header': isDropped }">
-      <transition name="slide-fade">
-        <div class="settingsTitle" v-if="isDropped">Settings</div>
-      </transition>
+    <div class="header" @click="isDropped = !isDropped" :class="{'active-header': isDropped }">
+      <div class="settingsTitle" v-if="isDropped">Settings</div>
       <svg
         class="icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -17,30 +15,104 @@
         />
       </svg>
     </div>
-    <transition name="slidedown">
-      <div v-if="isDropped" class="list" :class="{'active-list': isDropped}">
+    <div v-if="isDropped" class="content" :class="{'anim-complete': animComplete}">
+      <div class="subheader">LAYERS</div>
+      <div class="setting-group">
+        <span class="setting">SIGMETs</span>
+        <toggle-button v-model="options.sigmets" color="#50fa7b" :sync="false" :labels="false" />
       </div>
-    </transition>
+      <div class="setting-group">
+        <span class="setting">Aircraft Labels</span>
+        <toggle-button
+          v-model="options.aircraftLabels"
+          color="#50fa7b"
+          :sync="false"
+          :labels="false"
+        />
+      </div>
+      <div class="setting-group">
+        <span class="setting">Weather Radar</span>
+        <toggle-button
+          v-model="options.weather"
+          color="#50fa7b"
+          :sync="false"
+          :labels="false"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { ToggleButton } from 'vue-js-toggle-button';
+
+
 export default {
+  components: { ToggleButton },
   data() {
     return {
       isDropped: false,
+      animComplete: false,
+      options: {
+        sigmets: false,
+        aircraftLabels: false,
+        weather: true,
+      },
     };
+  },
+  created() {
+    this.getOptions();
+  },
+  watch: {
+    options: {
+      handler(newVal) {
+        const options = JSON.stringify(newVal);
+        this.$store.commit('updateOptions', options);
+        localStorage.options = options;
+      },
+      deep: true,
+    },
+  },
+  methods: {
+    getOptions() {
+      if (this.$store.state.options) {
+        this.options = this.$store.state.options;
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .MapSettings {
+  max-width: 500px;
   z-index: 4;
   position: absolute;
   right: 0.75rem;
   top: 0.75rem;
   height: calc(100% - 2rem);
+}
+
+.subheader {
+  color: var(--lighter);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.setting {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.setting-group {
+  padding: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &:nth-child(2) {
+    padding-top: 0;
+  }
 }
 
 .header {
@@ -49,11 +121,9 @@ export default {
   border-radius: 7px;
   padding: 0.75rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   transform: translateY(1px);
-  transition: all 200ms ease-in-out;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .settingsTitle {
@@ -64,8 +134,8 @@ export default {
 }
 
 .active-header {
-  padding-left: 25vw;
   border-radius: 7px 7px 0 0;
+  justify-content: flex-end;
 }
 
 .icon {
@@ -73,32 +143,13 @@ export default {
   width: auto;
 }
 
-.list {
-  height: calc(100% - 4rem);
+.content {
+  width: 20vw;
+  padding: 1rem;
   border-radius: 0px 0px 7px 7px;
   transform-origin: top;
   transition: transform 0.4s ease-in-out;
-  transition-delay: 200ms;
   overflow: hidden;
   background: $secondary;
-}
-
-.active-list {
-  transition-delay: 0;
-}
-
-.slidedown-enter,
-.slidedown-leave-to {
-  transform: scaleY(0);
-}
-
-.slide-fade-enter-active {
-  transition: all 200ms ease;
-}
-.slide-fade-leave-active {
-  transition: all 200ms cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter, .slide-fade-leave-to{
-  opacity: 0;
 }
 </style>

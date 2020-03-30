@@ -4,6 +4,10 @@ export default {
   async mounted() {
     this.addRainfall();
   },
+  beforeDestroy() {
+    this.$store.state.map.removeLayer('rainviewer');
+    this.$store.state.map.removeSource('rainviewer');
+  },
   methods: {
     async addRainfall() {
       const response = await fetch('https://tilecache.rainviewer.com/api/maps.json');

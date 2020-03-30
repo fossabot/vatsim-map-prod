@@ -61,15 +61,3 @@ label {
 .section-message {
   font-weight: 800;
 }
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: $secondary; 
-}
-
-::-webkit-scrollbar-thumb {
-  background: $highlight; 
-}

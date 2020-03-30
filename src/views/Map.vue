@@ -8,7 +8,7 @@
         <ControllerLayers />
         <PilotsLayer />
         <!-- <TrailLayer /> -->
-        <WeatherRadar />
+        <WeatherRadar v-if="showWxRadar" />
         <SigmetLayer />
       </div>
     </MglMap>
@@ -35,7 +35,12 @@ export default {
       mapStyle: 'mapbox://styles/markdoyle/ck7ziswea26v21in02hvdrafj?optimize=true',
     };
   },
-  mounted() { console.log(this.$route); },
+  computed: {
+    showWxRadar() {
+      const options = JSON.parse(this.$store.state.options);
+      return options.weather;
+    },
+  },
   components: {
     WelcomeToast,
     PilotsLayer,

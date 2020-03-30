@@ -18,7 +18,6 @@ export default {
       // this.initGroundControllers();
     },
     initGroundControllers() {
-      console.log(this.initialFetch.GND);
       for (const feature of this.initialFetch.GND.data.features) {
         const el = document.createElement('div');
         el.innerHTML = feature.properties.callsign;
