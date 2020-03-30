@@ -72,6 +72,7 @@ export default {
   },
   methods: {
     toggleNav() {
+      this.$store.commit('setSideBarContent', null);
       this.showNav = !this.showNav;
       if (!this.showNav) this.$refs.header.blur();
     },
@@ -89,6 +90,7 @@ export default {
   width: 20%;
   min-width: 200px;
   position: relative;
+  z-index: 5;
 }
 
 .list-header {

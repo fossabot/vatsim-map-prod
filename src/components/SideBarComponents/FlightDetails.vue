@@ -1,13 +1,6 @@
 <template>
   <div class="FlightDetails">
     <div class="button-controls">
-      <inline-svg
-        @click="close()"
-        id="close-btn"
-        class="button-control-icon button-interactions"
-        fill="#fff"
-        :src="require('../../assets/img/svg/close.svg')"
-      />
       <button
         id="track-btn"
         @click="toggleTrack()"
@@ -22,6 +15,13 @@
           :src="require('../../assets/img/svg/eye.svg')"
         />
       </button>
+      <inline-svg
+        @click="close()"
+        id="close-btn"
+        class="button-control-icon button-interactions"
+        fill="#fff"
+        :src="require('../../assets/img/svg/close.svg')"
+      />
     </div>
     <section>
       <header>{{content.properties.callsign}}</header>

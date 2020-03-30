@@ -48,7 +48,7 @@ export default {
   position: relative;
   background-color: $primary;
   width: min-content;
-  z-index: 5;
+  z-index: 4;
   min-width: 400px;
   overflow: auto;
   transition: all 200ms ease-in-out;

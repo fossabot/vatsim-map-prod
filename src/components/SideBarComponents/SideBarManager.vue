@@ -29,11 +29,11 @@ export default {
 
 <style lang="scss">
 .sidebar-manager {
+  z-index: 3;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   height: 100%;
-  background-color: $secondary;
 }
 
 .slide-enter-active {
@@ -46,7 +46,7 @@ export default {
 
 @keyframes slide-in {
   0% {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
@@ -58,7 +58,7 @@ export default {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 }
 </style>

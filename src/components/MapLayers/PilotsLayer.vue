@@ -42,7 +42,6 @@ export default {
         id: 'pilotsTextLayer',
         type: 'symbol',
         source: 'pilots',
-        minzoom: 7,
         layout: {
           'text-allow-overlap': true,
           'text-field': ['get', 'callsign'],
@@ -63,10 +62,10 @@ export default {
       await this.updatePilots();
     }, 15000);
 
-    // setInterval(() => {
-    //   const mapZoom = this.$store.state.map.getZoom();
-    //   if (this.predictiveSource.data && mapZoom > 6.5) this.predictiveRender();
-    // }, 500);
+    setInterval(() => {
+      const mapZoom = this.$store.state.map.getZoom();
+      if (this.predictiveSource.data && mapZoom > 6.5) this.predictiveRender();
+    }, 500);
   },
   methods: {
     async fetchPilots() {
