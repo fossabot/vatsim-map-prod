@@ -31,7 +31,7 @@ export default {
     flyToFeature() {
       this.$store.state.map.flyTo({
         center: this.content.geometry.coordinates,
-        offset: [-150, 0],
+        offset: [+150, 0],
         speed: 0.5,
         essential: true,
       });
