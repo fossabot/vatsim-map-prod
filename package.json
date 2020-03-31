@@ -9,6 +9,8 @@
     "start": "vue-cli-service serve --host localhost"
   },
   "dependencies": {
+    "@sentry/browser": "^5.15.4",
+    "@sentry/integrations": "^5.15.4",
     "@vue/composition-api": "^0.4.0",
     "core-js": "^3.6.4",
     "mapbox-gl": "^1.8.1",
