@@ -1,16 +1,11 @@
-# vatsim-map   [![Netlify Status](https://api.netlify.com/api/v1/badges/f526d7b9-a327-430d-b4c6-30acf11664bd/deploy-status)](https://app.netlify.com/sites/awesome-easley-8c548e/deploys) 
+# vatsim-map   [![License](https://badgen.net/badge/license/GPLv2/blue)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) [![Style](https://badgen.net/badge/code%20style/Airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript/) [![Version](https://img.shields.io/badge/vue-2.6.11-green.svg)](https://vuejs.org/)
 
-This is an advanced vatsim map 🗺 featuring predictive rendering, the fastest possible refresh rate and a beautiful user interface ⚗️
+This is the official VATSIM Map made with Vue.js
 
-## Project setup
-```
-npm install
-```
+## Contributors
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm start
 ``` 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
