@@ -17,7 +17,6 @@ export default {
 .TopNav {
   padding: 0.5rem 1rem;
   display: flex;
-  // align-items: center;
   width: 100vw;
   background-color: $secondary;
   z-index: 4;

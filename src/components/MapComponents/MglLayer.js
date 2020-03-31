@@ -44,7 +44,7 @@ export default {
     addSource() {
       this.$store.state.map.addSource(this.source.data.id, this.source);
     },
-    async removeLayer() {
+    removeLayer() {
       const layer = this.$store.state.map.getLayer(this.layer.id);
       if (layer) this.$store.state.map.removeLayer(this.layer.id);
       this.$store.commit('removeLayerfromList', this.layer.id);

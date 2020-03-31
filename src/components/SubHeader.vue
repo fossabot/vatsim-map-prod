@@ -14,7 +14,6 @@ export default {
 <style lang="scss" scoped>
 
 .SubHeader {
-  // box-sizing: border-box;
   background-color: $secondary;
   border-top: 1px solid $border;
   padding: 1rem 3rem;

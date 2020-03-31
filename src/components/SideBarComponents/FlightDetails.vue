@@ -229,7 +229,6 @@ export default {
 
 .button-controls {
   margin-bottom: 1.5rem;
-  // width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -243,9 +242,6 @@ export default {
 .left-margin {
   margin-left: 0.5rem;
   height: 1.25rem;
-}
-
-.close-button {
 }
 
 button {

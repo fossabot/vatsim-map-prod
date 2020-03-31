@@ -36,6 +36,7 @@ export default {
           'icon-image': 'airplaneIcon',
           'icon-size': 0.35,
           'icon-rotate': ['get', 'heading'],
+          'icon-rotation-alignment': 'map',
         },
       },
       geojsonTextLayer: {

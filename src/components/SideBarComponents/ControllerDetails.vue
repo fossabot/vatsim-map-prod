@@ -32,6 +32,7 @@
 </template>
 
 <script>
+// not currently in use
 export default {
   props: {
     content: {
@@ -88,7 +89,6 @@ export default {
 }
 
 .pilot {
-  // color: var(--lighter);
   background-color: rgba(204, 204, 204, 0.2);
   padding: 0.25rem;
   padding-left: 2rem;

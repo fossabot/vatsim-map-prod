@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// not currently in use
 import MglLayer from '@/components/MapComponents/MglLayer';
 
 export default {

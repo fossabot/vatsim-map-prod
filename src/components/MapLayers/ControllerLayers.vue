@@ -1,4 +1,5 @@
 <script>
+// not currently in use
 import mapboxgl from 'mapbox-gl';
 import MglLayer from '@/components/MapComponents/MglLayer';
 
@@ -15,6 +16,7 @@ export default {
       const response = await fetch('https://map-dev.vatsim.net/api/v1/network/online/controllers?groupBy=type&strict=false');
       const data = await response.json();
       this.initialFetch = data;
+      // not currently in use
       // this.initGroundControllers();
     },
     initGroundControllers() {

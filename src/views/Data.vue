@@ -27,7 +27,6 @@
 import SubHeader from '@/components/SubHeader.vue';
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
   components: { SubHeader },
 };
 </script>
